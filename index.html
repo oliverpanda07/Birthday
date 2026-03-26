@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday ❤️</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background-color: #ffdde1;
+        }
+        #content {
+            display: none;
+        }
+        img {
+            width: 250px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: pink;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Enter Password</h2>
+    <input type="password" id="pass">
+    <button onclick="check()">Open</button>
+
+    <div id="content">
+        <h1>Happy Birthday My Love ❤️</h1>
+        <p>
+            Tum meri life ka sabse beautiful part ho.  
+            Tumhari smile meri sabse badi happiness hai.  
+            Main bas itna bolna chahta hoon…  
+            Thank you for coming into my life.  
+            Happy Birthday ❤️
+        </p>
+
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+
+        <p>I Love You ❤️</p>
+    </div>
+
+    <script>
+        function check() {
+            var password = document.getElementById("pass").value;
+            if(password == "1234") {
+                document.getElementById("content").style.display = "block";
+            } else {
+                alert("Wrong Password");
+            }
+        }
+    </script>
+
+</body>
+</html>
