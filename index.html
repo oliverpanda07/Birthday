@@ -1,63 +1,115 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Happy Birthday ☺️❤️</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial;
-            background-color: #ffdde1;
-        }
-        #content {
-            display: none;
-        }
-        img {
-            width: 250px;
-            margin: 10px;
-            border-radius: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            background-color: pink;
-            border: none;
-            border-radius: 10px;
-        }
-    </style>
+<title>surprise❤️</title>
+
+<style>
+body {
+    text-align: center;
+    font-family: Arial;
+    background: linear-gradient(to right, #ffdde1, #ee9ca7);
+}
+
+img {
+    width: 250px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    background-color: pink;
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.memory {
+    margin: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+}
+
+#textPage, #journeyPage {
+    display: none;
+}
+</style>
+
 </head>
 <body>
 
+<!-- Password Page -->
+<div id="passwordPage">
     <h2>Enter Password</h2>
     <input type="password" id="pass">
+    <br>
     <button onclick="check()">Open</button>
+</div>
 
-    <div id="content">
-        <h1>Happy Birthday My Love ❤️</h1>
-        <p>
-            Tum meri life ka sabse beautiful part ho.  
-            Tumhari smile meri sabse badi happiness hai.  
-            Main bas itna bolna chahta hoon…  
-            Thank you for coming into my life.  
-            Happy Birthday ❤️
-        </p>
+<!-- Romantic Text Page -->
+<div id="textPage">
+    <h1>Happy Birthday ❤️</h1>
+    <p>
+        Mere paas tumhare liye ek chhota sa surprise hai...  
+        Shayad perfect na ho, par dil se banaya hai.  
+        Agar tum ready ho, to neeche click karo.
+    </p>
+    <button onclick="openJourney()">Open Our Journey ❤️</button>
+</div>
 
+<!-- Journey Page -->
+<div id="journeyPage">
+
+    <h1>Our Journey ❤️</h1>
+
+    <div class="memory">
         <img src="photo1.jpg">
-        <img src="photo2.jpg">
-        <img src="photo3.jpg">
-
-        <p>I Love You ❤️</p>
+        <h3>First Time We Met</h3>
+        <p>Yahin se sab start hua... aur meri life change hone lagi.</p>
     </div>
 
-    <script>
-        function check() {
-            var password = document.getElementById("pass").value;
-            if(password == "1234") {
-                document.getElementById("content").style.display = "block";
-            } else {
-                alert("Wrong Password");
-            }
-        }
-    </script>
+    <div class="memory">
+        <img src="photo2.jpg">
+        <h3>Beautiful Day</h3>
+        <p>Ye wala din mere favourite days me se ek hai.</p>
+    </div>
+
+    <div class="memory">
+        <img src="photo3.jpg">
+        <h3>Best Memory</h3>
+        <p>Mujhe tumhari ye smile bahut pasand hai.</p>
+    </div>
+
+    <div class="memory">
+        <img src="photo4.jpg">
+        <h3>Today</h3>
+        <p>Bas itna bolna hai — Happy Birthday ❤️ I Love You.</p>
+    </div>
+
+    <audio autoplay loop>
+        <source src="music.mp3" type="audio/mp3">
+    </audio>
+
+</div>
+
+<script>
+function check() {
+    var password = document.getElementById("pass").value;
+    if(password == "1234") {
+        document.getElementById("passwordPage").style.display = "none";
+        document.getElementById("textPage").style.display = "block";
+    } else {
+        alert("Wrong Password");
+    }
+}
+
+function openJourney() {
+    document.getElementById("textPage").style.display = "none";
+    document.getElementById("journeyPage").style.display = "block";
+}
+</script>
 
 </body>
 </html>
