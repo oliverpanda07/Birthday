@@ -196,7 +196,11 @@ function check() {
     if(password == "1234") {
         document.getElementById("passwordPage").style.display = "none";
         document.getElementById("textPage").style.display = "block";
-        document.getElementById("bgMusic").play();
+
+        var music = document.getElementById("bgMusic");
+        music.currentTime = 0;
+        music.play();
+
     } else {
         alert("Wrong Password");
     }
@@ -205,6 +209,8 @@ function check() {
 function openJourney() {
     document.getElementById("textPage").style.display = "none";
     document.getElementById("journeyPage").style.display = "block";
+
+    document.getElementById("bgMusic").pause();
 }
 
 function goBackToPassword() {
@@ -215,9 +221,12 @@ function goBackToPassword() {
 function goBackToText() {
     document.getElementById("journeyPage").style.display = "none";
     document.getElementById("textPage").style.display = "block";
+
+    document.getElementById("bgMusic").play();
 }
 
 function finalMessage() {
-    alert("Happy Birthday ❤️\n\nThank you for coming into my life.\nYou made my life beautiful.\nI am very lucky to have you.\n\nI Love You ❤️");
+    document.getElementById("bgMusic").pause();
+    alert("Happy Birthday ❤️\n\nThank you for coming into my life.");
 }
 </script>
