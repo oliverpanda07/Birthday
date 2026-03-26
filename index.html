@@ -57,6 +57,8 @@ button {
         Agar tum ready ho, to neeche click karo.
     </p>
     <button onclick="openJourney()">Open Our Journey ❤️</button>
+    <br><br>
+<button onclick="goBackToPassword()">⬅ Back</button>
 </div>
 
 <!-- Journey Page -->
@@ -91,9 +93,13 @@ button {
     <audio autoplay loop>
         <source src="music.mp3" type="audio/mp3">
     </audio>
+<br><br>
+<button onclick="goBackToText()">⬅ Back</button>
 
+<br><br>
+<button onclick="finalMessage()">Final Message ❤️</button>
 </div>
-
+    
 <script>
 function check() {
     var password = document.getElementById("pass").value;
@@ -109,7 +115,18 @@ function openJourney() {
     document.getElementById("textPage").style.display = "none";
     document.getElementById("journeyPage").style.display = "block";
 }
-</script>
 
-</body>
-</html>
+function goBackToPassword() {
+    document.getElementById("textPage").style.display = "none";
+    document.getElementById("passwordPage").style.display = "block";
+}
+
+function goBackToText() {
+    document.getElementById("journeyPage").style.display = "none";
+    document.getElementById("textPage").style.display = "block";
+}
+
+function finalMessage() {
+    alert("Happy Birthday ❤️\n\nThank you for coming into my life.\nYou made my life beautiful.\nI am very lucky to have you.\n\nI Love You ❤️");
+}
+</script>
