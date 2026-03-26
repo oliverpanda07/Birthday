@@ -35,6 +35,69 @@ button {
 #textPage, #journeyPage {
     display: none;
 }
+.side-border {
+    position: fixed;
+    top: 0;
+    width: 70px;
+    height: 100%;
+    background-image: url('https://i.imgur.com/8Km9tLL.png');
+    background-size: cover;
+    z-index: -1;
+}
+
+.left-border { left: 0; }
+.right-border { right: 0; }
+
+.round-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 6px solid #ff4d88;
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+.balloon {
+    position: fixed;
+    bottom: -100px;
+    width: 40px;
+    height: 50px;
+    border-radius: 50%;
+    animation: floatUp 12s linear infinite;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0); }
+    to { transform: translateY(-120vh); }
+}
+
+.glitter {
+    position: fixed;
+    top: 0;
+    width: 6px;
+    height: 6px;
+    background: gold;
+    animation: fall 6s linear infinite;
+}
+
+@keyframes fall {
+    from { transform: translateY(0); }
+    to { transform: translateY(100vh); }
+}
+
+.burst-balloon {
+    position: fixed;
+    bottom: 0;
+    width: 30px;
+    height: 40px;
+    background: red;
+    border-radius: 50%;
+    animation: burst 1s ease-out forwards;
+}
+
+@keyframes burst {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-300px); opacity: 0; }    
 </style>
 
 </head>
@@ -42,6 +105,8 @@ button {
 
 <!-- Password Page -->
 <div id="passwordPage">
+    <div class="side-border left-border"></div>
+    <div class="side-border right-border"></div>
     <h2>Enter Password</h2>
     <input type="password" id="pass">
     <br>
@@ -50,6 +115,28 @@ button {
 
 <!-- Romantic Text Page -->
 <div id="textPage">
+    <!-- Flower Border -->
+<div class="side-border left-border"></div>
+<div class="side-border right-border"></div>
+
+<!-- Balloon Burst -->
+<span class="burst-balloon" style="left:20%"></span>
+<span class="burst-balloon" style="left:40%"></span>
+<span class="burst-balloon" style="left:60%"></span>
+<span class="burst-balloon" style="left:80%"></span>
+
+<!-- Floating Balloons -->
+<div class="balloon" style="left:10%; background:red;"></div>
+<div class="balloon" style="left:30%; background:blue;"></div>
+<div class="balloon" style="left:50%; background:green;"></div>
+<div class="balloon" style="left:70%; background:orange;"></div>
+<div class="balloon" style="left:90%; background:pink;"></div>
+
+<!-- Glitter -->
+<div class="glitter" style="left:15%;"></div>
+<div class="glitter" style="left:35%;"></div>
+<div class="glitter" style="left:55%;"></div>
+<div class="glitter" style="left:75%;"></div>
     <h1>Happy Birthday ❤️pyaari bachii😘</h1>
     <img src="photo1.jpg" class="round-photo">
     <p>
@@ -91,7 +178,7 @@ button {
         <p>Bas itna bolna hai — Happy Birthday ❤️ I Love You.</p>
     </div>
 
-    <audio autoplay loop>
+   <audio id="bgMusic" loop>
         <source src="music.mp3" type="audio/mp3">
     </audio>
 <br><br>
@@ -107,6 +194,7 @@ function check() {
     if(password == "1234") {
         document.getElementById("passwordPage").style.display = "none";
         document.getElementById("textPage").style.display = "block";
+        document.getElementById("bgMusic").play();
     } else {
         alert("Wrong Password");
     }
