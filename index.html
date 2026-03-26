@@ -35,7 +35,16 @@ button {
 #textPage, #journeyPage {
     display: none;
 }
+.heart {
+    position: fixed;
+    font-size: 22px;
+    animation: heartFall 8s linear infinite;
+}
 
+@keyframes heartFall {
+    from { transform: translateY(-10vh); }
+    to { transform: translateY(110vh); }
+}
 .round-photo {
     width: 160px;
     height: 160px;
@@ -85,7 +94,8 @@ button {
 
 @keyframes burst {
     0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-300px); opacity: 0; }    
+    100% { transform: translateY(-300px); opacity: 0; }  
+   
 </style>
 
 </head>
@@ -102,6 +112,11 @@ button {
 
 <!-- Romantic Text Page -->
 <div id="textPage">
+<div class="heart" style="left:10%">❤️</div>
+<div class="heart" style="left:30%">💖</div>
+<div class="heart" style="left:50%">💕</div>
+<div class="heart" style="left:70%">💗</div>
+<div class="heart" style="left:90%">💓</div>
     <!-- Flower Border -->
 
 
