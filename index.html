@@ -96,6 +96,21 @@ button {
 @keyframes burst {
     0% { transform: translateY(0); opacity: 1; }
     100% { transform: translateY(-300px); opacity: 0; }  
+    .collage {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.collage img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+}
    
 </style>
 
@@ -140,7 +155,7 @@ button {
 <div class="glitter" style="left:55%;"></div>
 <div class="glitter" style="left:75%;"></div>
     <h1>Happy Birthday ❤️pyaari bachii😘</h1>
-    <img src="photo1.jpg" class="round-photo">
+    <img src="photo0.jpg" class="round-photo">
     <p>
         Mere paas aapke liye ek chhota sa surprise hai...  
         Shayad perfect na ho, par dil se banaya hai.  
@@ -155,31 +170,41 @@ button {
 <div id="journeyPage">
 
     <h1>❤️ Our Journey ❤️</h1>
+<h2>Our Beautiful Memories ❤️</h2>
+<p>Every photo here is a beautiful memory with you ❤️</p>
 
-    <div class="memory">
-        <img src="photo1.jpg">
-        <h3>First Time We Met</h3>
-        <p>Yahin se sab start hua... aur meri life change hone lagi.</p>
-    </div>
+<h3 id="days"></h3>
 
-    <div class="memory">
-        <img src="photo2.jpg">
-        <h3>Beautiful Day</h3>
-        <p>Ye wala din mere favourite days me se ek hai.</p>
-    </div>
+<div class="collage">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+    <img src="photo4.jpg">
+    <img src="photo5.jpg">
+    <img src="photo6.jpg">
+    <img src="photo7.jpg">
+    <img src="photo8.jpg">
+    <img src="photo9.jpg">
+    <img src="photo10.jpg">
+    <img src="photo11.jpg">
+    <img src="photo12.jpg">
+    <img src="photo13.jpg">
+    <img src="photo14.jpg">
+    <img src="photo15.jpg">
+    <img src="photo16.jpg">
+    <img src="photo17.jpg">
+    <img src="photo18.jpg">
+    <img src="photo19.jpg">
+    <img src="photo20.jpg">
+    <img src="photo21.jpg">
+    <img src="photo22.jpg">
+    <img src="photo23.jpg">
+    <img src="photo24.jpg">
+    <img src="photo25.jpg">
+    <img src="photo26.jpg">
+</div>
 
-    <div class="memory">
-        <img src="photo3.jpg">
-        <h3>Best Memory</h3>
-        <p>Mujhe tumhari ye smile bahut pasand hai.</p>
-    </div>
-
-    <div class="memory">
-        <img src="photo4.jpg">
-        <h3>Today</h3>
-        <p>Bas itna bolna hai — Happy Birthday ❤️ I Love You.</p>
-    </div>
-
+<p>I want many more memories with you... ❤️</p>
    <audio id="bgMusic" loop>
         <source src="music.mp3" type="audio/mp3">
     </audio>
@@ -229,4 +254,11 @@ function finalMessage() {
     document.getElementById("bgMusic").pause();
     alert("Happy Birthday ❤️\n\nThank you for coming into my life.");
 }
+var startDate = new Date("July 6, 2024");
+var today = new Date();
+var timeDiff = today - startDate;
+var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+document.getElementById("days").innerHTML =
+"We have spent " + days + " days together ❤️";
 </script>
