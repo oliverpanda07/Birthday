@@ -168,6 +168,13 @@ button {
 </head>
 <body>
 <button onclick="toggleMusic()" id="musicButton">🔊</button>
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<audio id="voiceMusic">
+    <source src="music2.wav" type="audio/wav">
+</audio>
 <!-- Password Page -->
 <div id="passwordPage">
    
@@ -325,25 +332,35 @@ button {
 <script>
 function check() {
     var password = document.getElementById("pass").value;
-    if(password == "6724") {
+
+    if (password == "6724") {
         document.getElementById("passwordPage").style.display = "none";
         document.getElementById("textPage").style.display = "block";
 
-        var music = document.getElementById("bgMusic");
-        music.currentTime = 0;
-        music.play();
+        var bg = document.getElementById("bgMusic");
+        var voice = document.getElementById("voiceMusic");
+
+        bg.volume = 0.3;
+        voice.volume = 1.0;
+
+        bg.currentTime = 0;
+        bg.play();
+
+        voice.currentTime = 0;
+        voice.play();
 
     } else {
         alert("Wrong Password");
     }
-}
+    }
 
 function openJourney() {
     document.getElementById("textPage").style.display = "none";
     document.getElementById("journeyPage").style.display = "block";
 
     document.getElementById("bgMusic").pause();
-}
+    document.getElementById("voiceMusic").pause();
+    }
 
 function goBackToPassword() {
     document.getElementById("textPage").style.display = "none";
@@ -354,7 +371,8 @@ function goBackToText() {
     document.getElementById("journeyPage").style.display = "none";
     document.getElementById("textPage").style.display = "block";
 
-    document.getElementById("bgMusic").play();
+    document.getElementById("bgMusic").pause();
+    document.getElementById("voiceMusic").pause();
 }
 
 function finalMessage() {
