@@ -197,10 +197,13 @@ button {
     color: white;
     border-radius: 8px;
     }
+    #journeyPage {
+    position: relative;
+    }
 #finalText {
     display: none;
-    position: fixed;
-    top: 70px;
+    position: absolute;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -211,7 +214,6 @@ button {
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     z-index: 3000;
     text-align: center;
-    }
 </style>
 
 </head>
@@ -466,6 +468,10 @@ function finalMessage() {
     document.getElementById("bgMusic").pause();
     document.getElementById("voiceMusic").pause();
     document.getElementById("journeyMusic").pause();
+}
+
+function closeFinal() {
+    document.getElementById("finalText").style.display = "none";
 }
 
 function closeFinal() {
