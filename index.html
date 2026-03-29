@@ -231,7 +231,7 @@ button {
 
 <br>
 
-<input type="range" id="voiceSeek" value="0" min="0" max="100" style="width:80%;">
+
     <button onclick="openJourney()">❤️Our Journey❤️</button>
     <br><br>
 <button onclick="goBackToPassword()">⬅ Back</button>
@@ -435,18 +435,7 @@ var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
 document.getElementById("days").innerHTML =
 "We have spent " + days + " days together ❤️";
-var voice = document.getElementById("voiceMusic");
-var seek = document.getElementById("voiceSeek");
 
-voice.addEventListener("timeupdate", function() {
-    var value = (voice.currentTime / voice.duration) * 100;
-    seek.value = value;
-});
-
-seek.addEventListener("input", function() {
-    var time = (seek.value / 100) * voice.duration;
-    voice.currentTime = time;
-});
 </script>
 
 </div>
