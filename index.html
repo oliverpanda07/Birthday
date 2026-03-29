@@ -222,6 +222,16 @@ button {
         Shayad perfect na ho, par dil se banaya hai.  
         Agar aap ready ho, to neeche click kijiye😁.
     </p>
+    <div style="margin-top:15px;">
+    <button onclick="backVoice()">⏪ 5 sec</button>
+    <button onclick="playVoice()">▶ Play</button>
+    <button onclick="pauseVoice()">⏸ Pause</button>
+    <button onclick="forwardVoice()">5 sec ⏩</button>
+</div>
+
+<br>
+
+<input type="range" id="voiceSeek" value="0" min="0" max="100" style="width:80%;">
     <button onclick="openJourney()">❤️Our Journey❤️</button>
     <br><br>
 <button onclick="goBackToPassword()">⬅ Back</button>
@@ -389,6 +399,23 @@ function finalMessage() {
     document.getElementById("bgMusic").pause();
     alert("Happy Birthday ❤️\n\nThank you for coming into my life.");
 }
+    function playVoice() {
+    document.getElementById("voiceMusic").play();
+}
+
+function pauseVoice() {
+    document.getElementById("voiceMusic").pause();
+}
+
+function forwardVoice() {
+    var v = document.getElementById("voiceMusic");
+    v.currentTime += 5;
+}
+
+function backVoice() {
+    var v = document.getElementById("voiceMusic");
+    v.currentTime -= 5;
+    }
     function toggleMusic() {
     var music = document.getElementById("bgMusic");
     var btn = document.getElementById("musicButton");
@@ -408,7 +435,18 @@ var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
 document.getElementById("days").innerHTML =
 "We have spent " + days + " days together ❤️";
+var voice = document.getElementById("voiceMusic");
+var seek = document.getElementById("voiceSeek");
 
+voice.addEventListener("timeupdate", function() {
+    var value = (voice.currentTime / voice.duration) * 100;
+    seek.value = value;
+});
+
+seek.addEventListener("input", function() {
+    var time = (seek.value / 100) * voice.duration;
+    voice.currentTime = time;
+});
 </script>
 
 </div>
