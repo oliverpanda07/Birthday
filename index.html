@@ -197,26 +197,36 @@ button {
     color: white;
     border-radius: 8px;
     }
-#bgAnimation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
 
-#textPage, #journeyPage {
-    position: relative;
-    z-index: 2;
-}
 </style>
 
 </head>
 <body>
     <div id="textPage">
-<div class="heart" style="left:10%">❤️</div>
+<div
+<button onclick="toggleMusic()" id="musicButton">🔊</button>
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<audio id="voiceMusic">
+    <source src="music2.wav" type="audio/wav">
+</audio>
+<audio id="journeyMusic">
+    <source src="music3.wav" type="audio/wav">
+ </audio>
+    
+<!-- Password Page -->
+<div id="passwordPage">
+   
+    <h2>Enter Password</h2>
+    <input type="password" id="pass">
+    <br>
+    <button onclick="check()">Open</button>
+</div>
+
+<!-- Romantic Text Page -->
+ class="heart" style="left:10%">❤️</div>
 <div class="heart" style="left:30%">💖</div>
 <div class="heart" style="left:50%">💕</div>
 <div class="heart" style="left:70%">💗</div>
@@ -242,29 +252,6 @@ button {
 <div class="glitter" style="left:35%;"></div>
 <div class="glitter" style="left:55%;"></div>
 <div class="glitter" style="left:75%;"></div>
-<button onclick="toggleMusic()" id="musicButton">🔊</button>
-<audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mp3">
-</audio>
-
-<audio id="voiceMusic">
-    <source src="music2.wav" type="audio/wav">
-</audio>
-<audio id="journeyMusic">
-    <source src="music3.wav" type="audio/wav">
- </audio>
-    
-<!-- Password Page -->
-<div id="passwordPage">
-   
-    <h2>Enter Password</h2>
-    <input type="password" id="pass">
-    <br>
-    <button onclick="check()">Open</button>
-</div>
-
-<!-- Romantic Text Page -->
-
     <h1>Happy Birthday ❤️pyaari bachii😘</h1>
     <img src="photo0.jpg" class="round-photo">
     <p>
@@ -400,7 +387,7 @@ function check() {
     if (password == "6724") {
         document.getElementById("passwordPage").style.display = "none";
         document.getElementById("textPage").style.display = "block";
-       document.getElementById("bgAnimation").style.display = "block";
+       
         var bg = document.getElementById("bgMusic");
         var voice = document.getElementById("voiceMusic");
 
@@ -433,7 +420,7 @@ function openJourney() {
 function goBackToPassword() {
     document.getElementById("textPage").style.display = "none";
     document.getElementById("passwordPage").style.display = "block";
-     document.getElementById("bgAnimation").style.display = "none";
+     
     document.getElementById("bgMusic").pause();
     document.getElementById("voiceMusic").pause();
     document.getElementById("journeyMusic").pause();
