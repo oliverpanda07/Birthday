@@ -163,6 +163,40 @@ button {
     cursor: pointer;
     z-index: 999;
 }
+    .popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 300px;
+    margin: 120px auto;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.popup-content h2 {
+    color: #ff4d88;
+}
+
+.popup-content button {
+    margin-top: 15px;
+    padding: 8px 15px;
+    border: none;
+    background: #ff4d88;
+    color: white;
+    border-radius: 8px;
+    }
 </style>
 
 </head>
@@ -397,7 +431,14 @@ function goBackToText() {
 
 function finalMessage() {
     document.getElementById("bgMusic").pause();
-    alert("Happy Birthday ❤️\n\nThank you for coming into my life.");
+    document.getElementById("voiceMusic").pause();
+    document.getElementById("journeyMusic").pause();
+
+    document.getElementById("finalPopup").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("finalPopup").style.display = "none";
 }
     function playVoice() {
     document.getElementById("voiceMusic").play();
@@ -439,5 +480,17 @@ document.getElementById("days").innerHTML =
 </script>
 
 </div>
+    <div id="finalPopup" class="popup">
+    <div class="popup-content">
+        <h2>Happy Birthday ❤️</h2>
+        <p>
+            Thank you for coming into my life.<br>
+            You are very special to me...<br>
+            This was a small surprise for you.<br><br>
+            I want many more memories with you... ❤️
+        </p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+    </div>
 </body>
 </html>
