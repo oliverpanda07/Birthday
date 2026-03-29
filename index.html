@@ -197,7 +197,21 @@ button {
     color: white;
     border-radius: 8px;
     }
-
+#finalText {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 3000;
+    text-align: center;
+    }
 </style>
 
 </head>
@@ -381,7 +395,7 @@ button {
 <br><br>
 <button onclick="finalMessage()">Final Message ❤️</button>
 </div>
-    <div id="finalText" style="display:none; margin:20px; padding:20px; background:white; border-radius:15px;">
+    <div id="finalText">
     <h2>❤️ Final Message ❤️</h2>
     <p>
         Thank you for coming into my life.<br>
@@ -389,6 +403,7 @@ button {
         Ye chhota sa surprise sirf tumhare liye tha.<br><br>
         I want many more memories with you... ❤️
     </p>
+    <button onclick="closeFinal()">Close</button>
     </div>
 <script>
     
@@ -445,13 +460,16 @@ function goBackToText() {
 }
 
 function finalMessage() {
+    document.getElementById("finalText").style.display = "block";
+
     document.getElementById("bgMusic").pause();
     document.getElementById("voiceMusic").pause();
     document.getElementById("journeyMusic").pause();
-
-    document.getElementById("finalText").style.display = "block";
 }
 
+function closeFinal() {
+    document.getElementById("finalText").style.display = "none";
+    }
 function closePopup() {
     document.getElementById("finalPopup").style.display = "none";
 }
