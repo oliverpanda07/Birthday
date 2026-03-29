@@ -233,13 +233,7 @@ button {
 <audio id="journeyMusic">
     <source src="music3.wav" type="audio/wav">
  </audio>
-    <div id="lockPage">
-    <h2>🔒 Private</h2>
-    <p>Enter our special date</p>
-    <input type="password" id="lockPass" placeholder="6 July 2024">
-    <br><br>
-    <button onclick="unlock()">Unlock</button>
-    </div>
+    
 <!-- Password Page -->
 <div id="passwordPage">
    
@@ -405,14 +399,7 @@ button {
 </div>
     
 <script>
-    function unlock() {
-    var pass = document.getElementById("lockPass").value;
-    if(pass === "6July2024") {
-        document.getElementById("lockPage").style.display = "none";
-    } else {
-        alert("Wrong date");
-    }
-    }
+    
 function check() {
     var password = document.getElementById("pass").value;
 
