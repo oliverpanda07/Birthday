@@ -378,6 +378,8 @@ button {
 <br><br>
     <button onclick="openLove()">❤️ Love Calculator</button>
 <br><br>
+    <button onclick="openShayari()">💖 Shayari Generator</button>
+<br><br> 
 <button onclick="goBackToText()">⬅ Back</button>
 
 <br><br>
@@ -395,6 +397,17 @@ button {
     <button onclick="calculateLove()">Calculate ❤️</button>
 
     <h2 id="loveResult"></h2>
+
+    <br><br>
+    <button onclick="goBackToJourney()">⬅ Back</button>
+</div>
+    <!-- Shayari Page -->
+<div id="shayariPage" style="display:none; text-align:center; padding:20px;">
+    <h1>💖 Shayari Generator 💖</h1>
+
+    <button onclick="generateShayari()">New Shayari</button>
+
+    <h2 id="shayariText" style="margin-top:20px;"></h2>
 
     <br><br>
     <button onclick="goBackToJourney()">⬅ Back</button>
@@ -552,7 +565,45 @@ function calculateLove() {
         name1 + " ❤️ " + name2 + "<br>" +
         "Love: " + lovePercent + "%<br>" + message;
         }
+    
 setInterval(updateLoveTime, 1000);
+    // Shayari Functions
+function openShayari() {
+    document.getElementById("journeyPage").style.display = "none";
+    document.getElementById("shayariPage").style.display = "block";
+}
+
+function goBackToJourneyFromShayari() {
+    document.getElementById("shayariPage").style.display = "none";
+    document.getElementById("journeyPage").style.display = "block";
+}
+
+function generateShayari() {
+    var shayari = [
+        "Tumhari muskaan hi meri jaan hai ❤️",
+        "Tum ho to har din special hai 💖",
+        "Meri har khushi tumse shuru hoti hai 😊",
+        "Tum meri zindagi ka sabse khoobsurat hissa ho 😍",
+        "Har pal tumhare saath jeena chahta hoon ❤️",
+        "Tum sirf pyaar nahi, meri aadat ho 💕",
+        "Meri duniya tumse hi hai 🌍❤️",
+        "Tumhe dekh kar hi mera din ban jata hai ☀️",
+        "Meri zindagi ki sabse khoobsurat kahani tum ho 💖",
+        "Tum saath ho to sab kuch aasaan lagta hai ❤️",
+        "Dil sirf tumhare liye dhadakta hai 💓",
+        "Har dua me tumhara naam hota hai 🤲❤️",
+        "Mujhe sirf tumhari zarurat hai 💕",
+        "Tum meri life ka best decision ho 😘",
+        "Tumse milkar life perfect lagti hai ❤️",
+        "Tum meri aadat, meri chahat aur meri zindagi ho 💖",
+        "Mujhe har janam me tum hi chahiye ❤️",
+        "Tum ho to sab kuch hai ❤️",
+        "I love you bolna easy hai, par tumhe paana meri kismat hai 💕"
+    ];
+
+    var random = Math.floor(Math.random() * shayari.length);
+    document.getElementById("shayariText").innerHTML = shayari[random];
+    }
 </script>
 
 
