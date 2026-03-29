@@ -410,17 +410,23 @@ button {
     <h2 id="shayariText" style="margin-top:20px;"></h2>
 
     <br><br>
-    <button onclick="goBackToJourney()">⬅ Back</button>
+    <button onclick="goBackToJourneyFromShayari()">← Back</button>
 </div>
 <script>
+    function hideAllPages() {
+    document.getElementById("textPage").style.display = "none";
+    document.getElementById("journeyPage").style.display = "none";
+    document.getElementById("lovePage").style.display = "none";
+    document.getElementById("shayariPage").style.display = "none";
+    }
     
 function check() {
     var password = document.getElementById("pass").value;
 
     if (password == "6724") {
-        document.getElementById("passwordPage").style.display = "none";
-        document.getElementById("textPage").style.display = "block";
-       
+    document.getElementById("passwordPage").style.display = "none";
+    hideAllPages();
+    document.getElementById("textPage").style.display = "block";
         var bg = document.getElementById("bgMusic");
         var voice = document.getElementById("voiceMusic");
 
@@ -529,15 +535,14 @@ function updateLoveTime() {
 updateLoveTime();
     // Love Calculator Functions
 function openLove() {
-    document.getElementById("journeyPage").style.display = "none";
+    hideAllPages();
     document.getElementById("lovePage").style.display = "block";
 }
 
 function goBackToJourney() {
-    document.getElementById("lovePage").style.display = "none";
+    hideAllPages();
     document.getElementById("journeyPage").style.display = "block";
 }
-
 function calculateLove() {
     var name1 = document.getElementById("name1").value;
     var name2 = document.getElementById("name2").value;
@@ -569,12 +574,11 @@ function calculateLove() {
 setInterval(updateLoveTime, 1000);
     // Shayari Functions
 function openShayari() {
-    document.getElementById("journeyPage").style.display = "none";
+    hideAllPages();
     document.getElementById("shayariPage").style.display = "block";
 }
-
 function goBackToJourneyFromShayari() {
-    document.getElementById("shayariPage").style.display = "none";
+    hideAllPages();
     document.getElementById("journeyPage").style.display = "block";
 }
 
