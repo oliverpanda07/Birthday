@@ -843,11 +843,15 @@ function selectTogetherAnswer(ans) {
 }
 
 function showTogetherResult() {
+    tScore = 0;
+
     for (var i = 0; i < 10; i++) {
         if (tAns1[i] == tAns2[i]) {
             tScore++;
         }
     }
+
+    var percent = tScore * 10;
 
     var msg = "";
     if (tScore >= 9) msg = "Perfect Couple 💖";
@@ -856,7 +860,14 @@ function showTogetherResult() {
     else msg = "You need more dates 😅";
 
     document.getElementById("togetherResult").innerHTML =
-        "Match Score: " + tScore + "/10 <br>" + msg;
+        "Match Score: " + tScore + "/10 ❤️<br>" +
+        "Love Match: " + percent + "% 💞<br>" +
+        msg + "<br><br>New quiz starting in 3 sec... ⏳";
+
+    // AUTO RESET AFTER 3 SECONDS
+    setTimeout(function () {
+        openTogetherQuiz();
+    }, 3000);
     }
 </script>
 
