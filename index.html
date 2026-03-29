@@ -197,7 +197,30 @@ button {
     color: white;
     border-radius: 8px;
     }
+.heart-float {
+    position: fixed;
+    bottom: -10px;
+    color: #ff4d88;
+    font-size: 20px;
+    animation: floatUp 12s linear infinite;
+    z-index: 1;
+}
 
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-800px);
+        opacity: 0;
+    }
+}
+
+.story-photo {
+    position: relative;
+    z-index: 2;
+}
 </style>
 
 </head>
@@ -280,7 +303,11 @@ button {
 <h2>Our Beautiful Memories ❤️</h2>
 <p>Every photo here is a beautiful memory with you ❤️</p>
 <h3 id="days"></h3>
-
+<div class="heart-float" style="left:15%; font-size:14px;">❤️</div>
+<div class="heart-float" style="left:35%; font-size:22px; animation-delay:2s;">❤️</div>
+<div class="heart-float" style="left:55%; font-size:18px; animation-delay:4s;">❤️</div>
+<div class="heart-float" style="left:75%; font-size:26px; animation-delay:6s;">❤️</div>
+<div class="heart-float" style="left:90%; font-size:16px; animation-delay:8s;">❤️</div>
 <img src="photo1.jpg" class="story-photo">
 <img src="photo2.jpg" class="story-photo">
 
