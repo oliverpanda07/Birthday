@@ -380,6 +380,7 @@ button {
 <br><br>
     <button onclick="openShayari()">💖 Shayari Generator</button>
 <br><br> 
+    <button onclick="openQuizMenu()">💖 Love Quiz</button>
 <button onclick="goBackToText()">⬅ Back</button>
 
 <br><br>
@@ -412,12 +413,56 @@ button {
     <br><br>
     <button onclick="goBackToJourneyFromShayari()">← Back</button>
 </div>
+    <!-- Love Quiz Menu -->
+<div id="quizMenuPage" style="display:none; text-align:center; padding:20px;">
+    <h1>💖 Love Quiz 💖</h1>
+
+    <button onclick="openAloneQuiz()">Play Alone 🧍</button>
+    <br><br>
+
+    <button onclick="openTogetherQuiz()">Play Together 👩‍❤️‍👨</button>
+    <br><br>
+
+    <button onclick="goBackToJourney()">⬅ Back</button>
+</div>
+
+<!-- Alone Quiz Page -->
+<div id="aloneQuizPage" style="display:none; text-align:center; padding:20px;">
+    <h2 id="aloneQuestion"></h2>
+
+    <button onclick="checkAloneAnswer(1)" id="alone1"></button><br><br>
+    <button onclick="checkAloneAnswer(2)" id="alone2"></button><br><br>
+    <button onclick="checkAloneAnswer(3)" id="alone3"></button><br><br>
+    <button onclick="checkAloneAnswer(4)" id="alone4"></button><br><br>
+
+    <h2 id="aloneResult"></h2>
+
+    <button onclick="goBackToQuizMenu()">⬅ Back</button>
+</div>
+
+<!-- Together Quiz Page -->
+<div id="togetherQuizPage" style="display:none; text-align:center; padding:20px;">
+    <h3 id="playerTurn"></h3>
+    <h2 id="togetherQuestion"></h2>
+
+    <button onclick="selectTogetherAnswer(1)" id="tog1"></button><br><br>
+    <button onclick="selectTogetherAnswer(2)" id="tog2"></button><br><br>
+    <button onclick="selectTogetherAnswer(3)" id="tog3"></button><br><br>
+    <button onclick="selectTogetherAnswer(4)" id="tog4"></button><br><br>
+
+    <h2 id="togetherResult"></h2>
+
+    <button onclick="goBackToQuizMenu()">⬅ Back</button>
+</div>
 <script>
-    function hideAllPages() {
+  function hideAllPages() {
     document.getElementById("textPage").style.display = "none";
     document.getElementById("journeyPage").style.display = "none";
     document.getElementById("lovePage").style.display = "none";
     document.getElementById("shayariPage").style.display = "none";
+    document.getElementById("quizMenuPage").style.display = "none";
+    document.getElementById("aloneQuizPage").style.display = "none";
+    document.getElementById("togetherQuizPage").style.display = "none";
     }
     
 function check() {
@@ -445,7 +490,7 @@ function check() {
     }
 
 function openJourney() {
-    document.getElementById("textPage").style.display = "none";
+    hideAllPages();
     document.getElementById("journeyPage").style.display = "block";
 
     document.getElementById("bgMusic").pause();
@@ -454,8 +499,7 @@ function openJourney() {
     var jm = document.getElementById("journeyMusic");
     jm.currentTime = 0;
     jm.play();
-}
-
+    }
 function goBackToPassword() {
     document.getElementById("textPage").style.display = "none";
     document.getElementById("passwordPage").style.display = "block";
@@ -466,12 +510,11 @@ function goBackToPassword() {
     }
 
 function goBackToText() {
-    document.getElementById("journeyPage").style.display = "none";
+    hideAllPages();
     document.getElementById("textPage").style.display = "block";
 
     document.getElementById("journeyMusic").pause();
-}
-
+    }
 
 
 function closeFinal() {
@@ -607,6 +650,213 @@ function generateShayari() {
 
     var random = Math.floor(Math.random() * shayari.length);
     document.getElementById("shayariText").innerHTML = shayari[random];
+    }
+    // ---------------- LOVE QUIZ SYSTEM ----------------
+
+// Open Quiz Menu
+function openQuizMenu() {
+    hideAllPages();
+    document.getElementById("quizMenuPage").style.display = "block";
+}
+
+function goBackToQuizMenu() {
+    hideAllPages();
+    document.getElementById("quizMenuPage").style.display = "block";
+}
+
+// Random Questions
+function getRandomQuestions(arr, n) {
+    var result = [];
+    var used = [];
+    while (result.length < n) {
+        var r = Math.floor(Math.random() * arr.length);
+        if (!used.includes(r)) {
+            used.push(r);
+            result.push(arr[r]);
+        }
+    }
+    return result;
+}
+
+function getRandomCorrect() {
+    return Math.floor(Math.random() * 4) + 1;
+}
+
+/* -------- ALONE QUIZ -------- */
+
+var fixedQuestions = [
+{ q: "Our special date?", options: ["6 July", "10 March", "12 Nov", "1 Jan"], correct: 1 },
+{ q: "Favourite colour?", options: ["Red", "Blue", "Black", "Pink"], correct: 3 },
+{ q: "Favourite food?", options: ["Pizza", "Burger", "Biryani", "Momos"], correct: 3 },
+{ q: "Favourite time to talk?", options: ["Morning", "Afternoon", "Night", "Anytime"], correct: 3 },
+{ q: "Favourite memory?", options: ["First chat", "First call", "First meet", "All"], correct: 4 },
+{ q: "Favourite place?", options: ["Park", "Cafe", "Home", "Trip"], correct: 3 },
+{ q: "Favourite song type?", options: ["Romantic", "Sad", "Party", "Old"], correct: 1 },
+{ q: "Favourite season?", options: ["Rain", "Winter", "Summer", "Spring"], correct: 2 },
+{ q: "Favourite day?", options: ["Monday", "Friday", "Sunday", "Everyday"], correct: 3 },
+{ q: "Future dream?", options: ["Travel", "Job", "Business", "Together"], correct: 4 }
+];
+
+var funQuestions = [
+{ q: "Who loves more?", options: ["Me", "You", "Equal", "Secret"] },
+{ q: "Who misses more?", options: ["Me", "You", "Both", "Secret"] },
+{ q: "Who is more cute?", options: ["Me", "You", "Both", "Secret"] },
+{ q: "Who gets angry first?", options: ["Me", "You", "Both", "No one"] },
+{ q: "Who says sorry first?", options: ["Me", "You", "Both", "No one"] },
+{ q: "Who sleeps fast?", options: ["Me", "You", "Both", "No one"] },
+{ q: "Who is more romantic?", options: ["Me", "You", "Both", "Secret"] },
+{ q: "Who is more jealous?", options: ["Me", "You", "Both", "Secret"] },
+{ q: "Who is more funny?", options: ["Me", "You", "Both", "Secret"] },
+{ q: "Who is more caring?", options: ["Me", "You", "Both", "Secret"] }
+];
+
+var selectedAloneQuestions = [];
+var aIndex = 0;
+var aScore = 0;
+
+function openAloneQuiz() {
+    hideAllPages();
+    document.getElementById("aloneQuizPage").style.display = "block";
+
+    var fixed = getRandomQuestions(fixedQuestions, 5);
+    var fun = getRandomQuestions(funQuestions, 5);
+    selectedAloneQuestions = fixed.concat(fun);
+
+    for (var i = 5; i < 10; i++) {
+        selectedAloneQuestions[i].correct = getRandomCorrect();
+    }
+
+    aIndex = 0;
+    aScore = 0;
+    loadAloneQuestion();
+}
+
+function loadAloneQuestion() {
+    document.getElementById("aloneResult").innerHTML = "";
+    document.getElementById("aloneQuestion").innerHTML = selectedAloneQuestions[aIndex].q;
+
+    document.getElementById("alone1").innerHTML = selectedAloneQuestions[aIndex].options[0];
+    document.getElementById("alone2").innerHTML = selectedAloneQuestions[aIndex].options[1];
+    document.getElementById("alone3").innerHTML = selectedAloneQuestions[aIndex].options[2];
+    document.getElementById("alone4").innerHTML = selectedAloneQuestions[aIndex].options[3];
+}
+
+function checkAloneAnswer(ans) {
+    if (ans == selectedAloneQuestions[aIndex].correct) {
+        aScore++;
+    }
+
+    aIndex++;
+
+    if (aIndex < 10) {
+        loadAloneQuestion();
+    } else {
+        showAloneResult();
+    }
+}
+
+function showAloneResult() {
+    var msg = "";
+    if (aScore >= 9) msg = "Perfect Love 💖";
+    else if (aScore >= 7) msg = "Strong Love ❤️";
+    else if (aScore >= 5) msg = "Good 😄";
+    else if (aScore >= 3) msg = "Thik thak 🙂";
+    else msg = "You need more love 😅";
+
+    document.getElementById("aloneResult").innerHTML =
+        "Score: " + aScore + "/10 <br>" + msg;
+}
+
+/* -------- TOGETHER QUIZ -------- */
+
+var togetherQuiz = [
+{ q: "Favourite Food?", options: ["Pizza", "Burger", "Biryani", "Momos"] },
+{ q: "Favourite Color?", options: ["Red", "Blue", "Black", "Pink"] },
+{ q: "Favourite Time?", options: ["Morning", "Night", "Evening", "Anytime"] },
+{ q: "Favourite Weather?", options: ["Rain", "Winter", "Summer", "Spring"] },
+{ q: "Favourite Movie Type?", options: ["Romantic", "Comedy", "Action", "Horror"] },
+{ q: "Favourite Activity?", options: ["Call", "Chat", "Meet", "Travel"] },
+{ q: "Favourite Place?", options: ["Park", "Cafe", "Home", "Trip"] },
+{ q: "Favourite Sweet?", options: ["Chocolate", "Ice Cream", "Cake", "Gulab Jamun"] },
+{ q: "Favourite Drink?", options: ["Tea", "Coffee", "Cold Drink", "Juice"] },
+{ q: "Favourite Season?", options: ["Rainy", "Winter", "Summer", "Spring"] },
+{ q: "Favourite Day?", options: ["Monday", "Friday", "Sunday", "Any"] },
+{ q: "Favourite Music?", options: ["Romantic", "Sad", "Party", "Old"] },
+{ q: "Favourite Hobby?", options: ["Sleeping", "Watching", "Gaming", "Travel"] },
+{ q: "Favourite Outfit?", options: ["Casual", "Formal", "Traditional", "Modern"] },
+{ q: "Favourite Fruit?", options: ["Mango", "Apple", "Banana", "Orange"] },
+{ q: "Favourite Fast Food?", options: ["Pizza", "Burger", "Fries", "Roll"] },
+{ q: "Favourite Ice Cream?", options: ["Chocolate", "Vanilla", "Strawberry", "Butterscotch"] },
+{ q: "Favourite Place to Visit?", options: ["Beach", "Mountains", "City", "Village"] },
+{ q: "Favourite Time to Talk?", options: ["Morning", "Afternoon", "Night", "Anytime"] },
+{ q: "Favourite Memory?", options: ["Chat", "Call", "Meet", "All"] }
+];
+
+var selectedTogetherQuestions = [];
+var tPlayer = 1;
+var tIndex = 0;
+var tAns1 = [];
+var tAns2 = [];
+var tScore = 0;
+
+function openTogetherQuiz() {
+    hideAllPages();
+    document.getElementById("togetherQuizPage").style.display = "block";
+
+    selectedTogetherQuestions = getRandomQuestions(togetherQuiz, 10);
+
+    tPlayer = 1;
+    tIndex = 0;
+    tAns1 = [];
+    tAns2 = [];
+    tScore = 0;
+
+    loadTogetherQuestion();
+}
+
+function loadTogetherQuestion() {
+    document.getElementById("playerTurn").innerHTML = "Player " + tPlayer + " Turn";
+    document.getElementById("togetherQuestion").innerHTML = selectedTogetherQuestions[tIndex].q;
+
+    document.getElementById("tog1").innerHTML = selectedTogetherQuestions[tIndex].options[0];
+    document.getElementById("tog2").innerHTML = selectedTogetherQuestions[tIndex].options[1];
+    document.getElementById("tog3").innerHTML = selectedTogetherQuestions[tIndex].options[2];
+    document.getElementById("tog4").innerHTML = selectedTogetherQuestions[tIndex].options[3];
+}
+
+function selectTogetherAnswer(ans) {
+    if (tPlayer == 1) {
+        tAns1[tIndex] = ans;
+        tPlayer = 2;
+        loadTogetherQuestion();
+    } else {
+        tAns2[tIndex] = ans;
+        tPlayer = 1;
+        tIndex++;
+
+        if (tIndex < 10) {
+            loadTogetherQuestion();
+        } else {
+            showTogetherResult();
+        }
+    }
+}
+
+function showTogetherResult() {
+    for (var i = 0; i < 10; i++) {
+        if (tAns1[i] == tAns2[i]) {
+            tScore++;
+        }
+    }
+
+    var msg = "";
+    if (tScore >= 9) msg = "Perfect Couple 💖";
+    else if (tScore >= 6) msg = "Strong Love ❤️";
+    else if (tScore >= 3) msg = "Good 😄";
+    else msg = "You need more dates 😅";
+
+    document.getElementById("togetherResult").innerHTML =
+        "Match Score: " + tScore + "/10 <br>" + msg;
     }
 </script>
 
