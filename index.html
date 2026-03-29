@@ -175,6 +175,9 @@ button {
 <audio id="voiceMusic">
     <source src="music2.wav" type="audio/wav">
 </audio>
+<audio id="journeyMusic">
+    <source src="music3.wav" type="audio/wav">
+ </audio>
 <!-- Password Page -->
 <div id="passwordPage">
    
@@ -360,19 +363,26 @@ function openJourney() {
 
     document.getElementById("bgMusic").pause();
     document.getElementById("voiceMusic").pause();
-    }
+
+    var jm = document.getElementById("journeyMusic");
+    jm.currentTime = 0;
+    jm.play();
+}
 
 function goBackToPassword() {
     document.getElementById("textPage").style.display = "none";
     document.getElementById("passwordPage").style.display = "block";
-}
+
+    document.getElementById("bgMusic").pause();
+    document.getElementById("voiceMusic").pause();
+    document.getElementById("journeyMusic").pause();
+    }
 
 function goBackToText() {
     document.getElementById("journeyPage").style.display = "none";
     document.getElementById("textPage").style.display = "block";
 
-    document.getElementById("bgMusic").pause();
-    document.getElementById("voiceMusic").pause();
+    document.getElementById("journeyMusic").pause();
 }
 
 function finalMessage() {
@@ -380,7 +390,7 @@ function finalMessage() {
     alert("Happy Birthday ❤️\n\nThank you for coming into my life.");
 }
     function toggleMusic() {
-    var music = document.getElementById("bgmusic");
+    var music = document.getElementById("bgMusic");
     var btn = document.getElementById("musicButton");
 
     if (music.paused) {
