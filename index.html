@@ -202,23 +202,8 @@ button {
 
 </head>
 <body>
-    <div id="textPage">
-<div
-<button onclick="toggleMusic()" id="musicButton">🔊</button>
-<audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mp3">
-</audio>
-
-<audio id="voiceMusic">
-    <source src="music2.wav" type="audio/wav">
-</audio>
-<audio id="journeyMusic">
-    <source src="music3.wav" type="audio/wav">
- </audio>
-    
 <!-- Password Page -->
 <div id="passwordPage">
-   
     <h2>Enter Password</h2>
     <input type="password" id="pass">
     <br>
@@ -226,52 +211,70 @@ button {
 </div>
 
 <!-- Romantic Text Page -->
- class="heart" style="left:10%">❤️</div>
-<div class="heart" style="left:30%">💖</div>
-<div class="heart" style="left:50%">💕</div>
-<div class="heart" style="left:70%">💗</div>
-<div class="heart" style="left:90%">💓</div>
-    <!-- Flower Border -->
+<div id="textPage">
 
+    <button onclick="toggleMusic()" id="musicButton">🔊</button>
 
-<!-- Balloon Burst -->
-<span class="burst-balloon" style="left:20%"></span>
-<span class="burst-balloon" style="left:40%"></span>
-<span class="burst-balloon" style="left:60%"></span>
-<span class="burst-balloon" style="left:80%"></span>
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mp3">
+    </audio>
 
-<!-- Floating Balloons -->
-<div class="balloon" style="left:10%; background:red;"></div>
-<div class="balloon" style="left:30%; background:blue;"></div>
-<div class="balloon" style="left:50%; background:green;"></div>
-<div class="balloon" style="left:70%; background:orange;"></div>
-<div class="balloon" style="left:90%; background:pink;"></div>
+    <audio id="voiceMusic">
+        <source src="music2.wav" type="audio/wav">
+    </audio>
 
-<!-- Glitter -->
-<div class="glitter" style="left:15%;"></div>
-<div class="glitter" style="left:35%;"></div>
-<div class="glitter" style="left:55%;"></div>
-<div class="glitter" style="left:75%;"></div>
-    <h1>Happy Birthday ❤️pyaari bachii😘</h1>
+    <audio id="journeyMusic">
+        <source src="music3.wav" type="audio/wav">
+    </audio>
+
+    <!-- Hearts -->
+    <div class="heart" style="left:10%">❤️</div>
+    <div class="heart" style="left:30%">💖</div>
+    <div class="heart" style="left:50%">💕</div>
+    <div class="heart" style="left:70%">💗</div>
+    <div class="heart" style="left:90%">💓</div>
+
+    <!-- Balloon Burst -->
+    <span class="burst-balloon" style="left:20%"></span>
+    <span class="burst-balloon" style="left:40%"></span>
+    <span class="burst-balloon" style="left:60%"></span>
+    <span class="burst-balloon" style="left:80%"></span>
+
+    <!-- Floating Balloons -->
+    <div class="balloon" style="left:10%; background:red;"></div>
+    <div class="balloon" style="left:30%; background:blue;"></div>
+    <div class="balloon" style="left:50%; background:green;"></div>
+    <div class="balloon" style="left:70%; background:orange;"></div>
+    <div class="balloon" style="left:90%; background:pink;"></div>
+
+    <!-- Glitter -->
+    <div class="glitter" style="left:15%;"></div>
+    <div class="glitter" style="left:35%;"></div>
+    <div class="glitter" style="left:55%;"></div>
+    <div class="glitter" style="left:75%;"></div>
+
+    <h1>Happy Birthday ❤️ pyaari bachii😘</h1>
     <img src="photo0.jpg" class="round-photo">
+
     <p>
-        Mere paas aapke liye ek chhota sa surprise hai...  
-        Shayad perfect na ho, par dil se banaya hai.  
-        Agar aap ready ho, to neeche click kijiye😁.
+        Mere paas aapke liye ek chhota sa surprise hai... <br>
+        Shayad perfect na ho, par dil se banaya hai. <br>
+        Agar aap ready ho, to neeche click kijiye🙂.
     </p>
+
     <div style="margin-top:15px;">
-    <button onclick="backVoice()">⏪ 5 sec</button>
-    <button onclick="playVoice()">▶ Play</button>
-    <button onclick="pauseVoice()">⏸ Pause</button>
-    <button onclick="forwardVoice()">5 sec ⏩</button>
-</div>
+        <button onclick="backVoice()">⏪ 5 sec</button>
+        <button onclick="playVoice()">▶ Play</button>
+        <button onclick="pauseVoice()">⏸ Pause</button>
+        <button onclick="forwardVoice()">5 sec ⏩</button>
+    </div>
 
-<br>
-
+    <br><br>
 
     <button onclick="openJourney()">❤️Our Journey❤️</button>
     <br><br>
-<button onclick="goBackToPassword()">⬅ Back</button>
+    <button onclick="goBackToPassword()">← Back</button>
+
 </div>
 
 <!-- Journey Page -->
