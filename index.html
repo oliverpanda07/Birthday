@@ -376,12 +376,29 @@ button {
         <source src="music.mp3" type="audio/mp3">
     </audio>
 <br><br>
+    <button onclick="openLove()">❤️ Love Calculator</button>
+<br><br>
 <button onclick="goBackToText()">⬅ Back</button>
 
 <br><br>
  
 </div>
-    
+    <!-- Love Calculator Page -->
+<div id="lovePage" style="display:none; text-align:center; padding:20px;">
+    <h1>❤️ Love Calculator ❤️</h1>
+
+    <input type="text" id="name1" placeholder="Your Name" style="padding:8px; margin:5px;">
+    <br>
+    <input type="text" id="name2" placeholder="Partner Name" style="padding:8px; margin:5px;">
+    <br><br>
+
+    <button onclick="calculateLove()">Calculate ❤️</button>
+
+    <h2 id="loveResult"></h2>
+
+    <br><br>
+    <button onclick="goBackToJourney()">⬅ Back</button>
+</div>
 <script>
     
 function check() {
@@ -497,6 +514,44 @@ function updateLoveTime() {
 }
 
 updateLoveTime();
+    // Love Calculator Functions
+function openLove() {
+    document.getElementById("journeyPage").style.display = "none";
+    document.getElementById("lovePage").style.display = "block";
+}
+
+function goBackToJourney() {
+    document.getElementById("lovePage").style.display = "none";
+    document.getElementById("journeyPage").style.display = "block";
+}
+
+function calculateLove() {
+    var name1 = document.getElementById("name1").value;
+    var name2 = document.getElementById("name2").value;
+
+    if(name1 == "" || name2 == "") {
+        document.getElementById("loveResult").innerHTML = "Enter both names 😢";
+        return;
+    }
+
+    var lovePercent = Math.floor(Math.random() * 51) + 50;
+
+    var message = "";
+
+    if(lovePercent > 90) {
+        message = "Made for each other ❤️";
+    } else if(lovePercent > 75) {
+        message = "Perfect couple 💖";
+    } else if(lovePercent > 60) {
+        message = "Good love 😊";
+    } else {
+        message = "Hmm... Friendship better 😅";
+    }
+
+    document.getElementById("loveResult").innerHTML =
+        name1 + " ❤️ " + name2 + "<br>" +
+        "Love: " + lovePercent + "%<br>" + message;
+        }
 setInterval(updateLoveTime, 1000);
 </script>
 
